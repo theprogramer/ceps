@@ -2,6 +2,6 @@ require 'ceps/version'
 
 require 'correios'
 
-class Ceps < Correios::Cep
+class Cep < Correios::Cep
 
 end

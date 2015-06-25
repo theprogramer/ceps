@@ -3,7 +3,7 @@ module Correios
   ##
   # Handles building the in memory store of CEP data
   class Setup
-    def codes
+    def ceps
       @ceps ||= load(['data', 'ceps.yaml'])
     end
 
