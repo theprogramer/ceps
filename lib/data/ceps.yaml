@@ -2,24 +2,24 @@
 10000000:
   location: Paulista
   type: Rua
-  neighbourhood: Centro
+  neighborhood: Centro
   city: São Paulo
   state: São Paulo
 20000000:
   location: Carioca
   type: Rua
-  neighbourhood: Centro
+  neighborhood: Centro
   city: Rio de Janeiro
   state: Rio de Janeiro
 20000500:
   location: Carioquinha
   type: Avenida
-  neighbourhood: Copacabana
+  neighborhood: Copacabana
   city: Rio de Janeiro
   state: Rio de Janeiro
 30000000:
   location: Mineira
   type: Avenida
-  neighbourhood: Centro
+  neighborhood: Centro
   city: Belo Horizonte
   state: Minas Gerais

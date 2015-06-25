@@ -4,11 +4,11 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe Correios::Cep do
   
-  let(:cep) { Correios::Cep.search(20000000) }
+  let(:cep) { Correios::Cep.new(20000000) }
 
-  it 'allows to create a country object from an integer' do
+  it 'allows to create a cep object from an integer' do
     cep = described_class.new(20000000)
-    expect(cep.ceps).not_to be_nil
+    expect(cep.data).not_to be_nil
   end
 
   it 'should return Carioca location' do
