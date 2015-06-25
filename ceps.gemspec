@@ -12,9 +12,9 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($OUTPUT_RECORD_SEPARATOR)
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = Ceps::VERSION
+  gem.name          = 'ceps'
   gem.require_paths = ['lib']
-  gem.version       = "0"
+  gem.version       = Ceps::VERSION
 
   gem.add_development_dependency('rspec', '>= 3')
 end
