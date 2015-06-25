@@ -3,6 +3,8 @@ CEPs
 
 Ceps is a collection of all sorts of useful information about every brazilian CEP packaged as pretty little cep objects.
 
+[![Build Status](https://travis-ci.org/theprogramer/ceps.png)](https://travis-ci.org/theprogramer/ceps)
+
 Installation
 ------------
 
