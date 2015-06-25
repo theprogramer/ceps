@@ -4,6 +4,8 @@ CEPs
 Ceps is a collection of all sorts of useful information about every brazilian CEP packaged as pretty little cep objects.
 
 [![Build Status](https://travis-ci.org/theprogramer/ceps.png)](https://travis-ci.org/theprogramer/ceps)
+[![Code Climate](https://codeclimate.com/github/theprogramer/ceps/badges/gpa.svg)](https://codeclimate.com/github/theprogramer/ceps)
+[![Test Coverage](https://codeclimate.com/github/theprogramer/ceps/badges/coverage.svg)](https://codeclimate.com/github/theprogramer/ceps/coverage)
 
 Installation
 ------------
