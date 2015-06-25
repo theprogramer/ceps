@@ -14,14 +14,14 @@ module Correios
 
     AttrReaders.each do |meth|
       define_method meth do
-        @ceps[meth.to_s]
+        @data[meth.to_s]
       end
     end
 
     attr_reader :data
 
     def initialize(cep)
-      @data = cep.is_a?(Hash) ? cep : Setup.data[cep]
+      @data = cep.is_a?(Hash) ? cep : Setup.ceps[cep]
     end
 
     def valid?
