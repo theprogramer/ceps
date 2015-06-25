@@ -16,7 +16,7 @@ desc 'Import MDB file'
 task :import do
 
   require 'mdb'
-  require 'ceps/mdb'
+  require_relative 'lib/ceps/mdb'
   require 'ruby-progressbar'
 
   db = Mdb.open ARGV[1]
