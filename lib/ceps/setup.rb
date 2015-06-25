@@ -9,12 +9,7 @@ module Correios
 
     def data
       return @data if instance_variable_defined?('@data')
-      @data = {}
-      ceps.each do |alpha2|
-        #@data[alpha2] = load(['data', 'ceps', "#{alpha2}.yaml"])[alpha2]
-        #@data[alpha2] = @data[alpha2].merge(translations[alpha2])
-      end
-      @data
+      @data ||= load(['data', 'data.yaml'])
     end
 
     private

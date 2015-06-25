@@ -37,12 +37,12 @@ module Correios
     class << self
 
       def new(cep_data)
-        if cep_data.is_a?(Hash) || Setup.data.keys.include?(cep_data.to_s)
+        if cep_data.is_a?(Hash) || Setup.data.keys.include?(cep_data)
           super
         end
       end
 
     end
   end
-  
+
 end
