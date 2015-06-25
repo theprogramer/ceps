@@ -4,12 +4,8 @@ module Correios
   # Handles building the in memory store of CEP data
   class Setup
     def ceps
+      return @ceps if instance_variable_defined?('@ceps')
       @ceps ||= load(['data', 'ceps.yaml'])
-    end
-
-    def data
-      return @data if instance_variable_defined?('@data')
-      @data ||= load(['data', 'data.yaml'])
     end
 
     private

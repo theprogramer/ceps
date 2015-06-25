@@ -20,8 +20,8 @@ module Correios
 
     attr_reader :data
 
-    def initialize(cep_data)
-      @data = cep_data.is_a?(Hash) ? cep_data : Setup.data[cep_data.to_s.upcase]
+    def initialize(cep)
+      @data = cep.is_a?(Hash) ? cep : Setup.data[cep]
     end
 
     def valid?
@@ -36,8 +36,8 @@ module Correios
 
     class << self
 
-      def new(cep_data)
-        if cep_data.is_a?(Hash) || Setup.data.keys.include?(cep_data)
+      def new(cep)
+        if cep.is_a?(Hash) || Setup.data.keys.include?(cep)
           super
         end
       end
