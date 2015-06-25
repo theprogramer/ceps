@@ -14,7 +14,7 @@ module Correios
 
     AttrReaders.each do |meth|
       define_method meth do
-        @data[meth.to_s]
+        @ceps[meth.to_s]
       end
     end
 
@@ -37,7 +37,7 @@ module Correios
     class << self
 
       def new(cep)
-        if cep.is_a?(Hash) || Setup.data.keys.include?(cep)
+        if cep.is_a?(Hash) || Setup.ceps.keys.include?(cep)
           super
         end
       end
