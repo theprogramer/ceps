@@ -16,6 +16,7 @@ desc 'Import MDB file'
 task :import do
 
   require 'mdb'
+  require 'yaml'
   require_relative 'lib/ceps/mdb'
   require 'ruby-progressbar'
 
