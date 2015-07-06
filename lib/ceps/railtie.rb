@@ -1,5 +1,5 @@
-require 'cep'
-require 'rails'
+require_relative 'cep'
+require_relative 'rails'
 
 module Ceps
   class Railtie < Rails::Railtie
