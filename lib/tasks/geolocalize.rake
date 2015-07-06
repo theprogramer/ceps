@@ -5,13 +5,13 @@ namespace :ceps do
   	require 'geocoder'
     require 'retryable'
     require 'yaml'
+    require 'ceps'
 
     # raise on geocoding errors such as query limit exceeded
     Geocoder.configure(always_raise: :all)
-
     puts "Loading routes"
     puts "This should take some time!"
-    ceps = YAML.load_file(ARGV[1]) || {}
+    ceps = YAML.load_file(ARGV[1] || Cep.configure.data_file) || {}
     puts "Geolocalize new hash"
     ceps.each do |cep, value|
       query = "#{ceps[cep][:type]} #{ceps[cep][:location]}, #{ceps[cep][:neighborhood]} - #{ceps[cep][:city]} - #{ceps[cep][:state]} - cep: #{cep}" 
@@ -32,7 +32,7 @@ namespace :ceps do
     end
 
     puts "Saving new ceps.yaml"
-    File.open('ceps.yml','w') do |h| 
+    File.open(Cep.configure.data_file,'w') do |h| 
       h.write ceps.to_yaml
     end
 

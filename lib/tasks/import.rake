@@ -38,7 +38,7 @@ namespace :ceps do
       progressbar.refresh
     end
     puts "Saving new ceps.yaml"
-    File.open('ceps.yml','w') do |h| 
+    File.open(Cep.configure.data_file,'w') do |h| 
       h.write ceps.to_yaml
     end
   end
