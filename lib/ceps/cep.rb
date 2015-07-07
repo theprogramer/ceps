@@ -18,12 +18,14 @@ module Correios
 
     attr_reader :data
 
+    attr_accessor :configuration
+
     def self.configure
-      self.configuration ||= Correios::Setup.new
+      @configuration ||= Correios::Setup.new
     end
 
     def initialize(cep)
-      @data = cep.is_a?(Hash) ? cep : configure.ceps[cep]
+      @data = cep.is_a?(Hash) ? cep : Cep.configure.ceps[cep]
     end
 
     def valid?
@@ -35,18 +37,11 @@ module Correios
     end
 
     private
-
-    class << self
-
-      attr_accessor :configuration
-
       def new(cep)
-        if cep.is_a?(Hash) || self.configure.ceps.keys.include?(cep)
+        if cep.is_a?(Hash) || Cep.configure.ceps.keys.include?(cep)
           super
         end
       end
-
-    end
   end
 
 end
