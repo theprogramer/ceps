@@ -41,7 +41,7 @@ module Correios
       attr_accessor :configuration
 
       def new(cep)
-        if cep.is_a?(Hash) || configure.ceps.keys.include?(cep)
+        if cep.is_a?(Hash) || self.configure.ceps.keys.include?(cep)
           super
         end
       end
