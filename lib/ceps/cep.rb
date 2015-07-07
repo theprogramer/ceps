@@ -2,8 +2,6 @@ module Correios
 
   class Cep
 
-    Setup = Correios::Setup.new
-
     AttrReaders = [
       :location,
       :type,
@@ -20,8 +18,14 @@ module Correios
 
     attr_reader :data
 
+    attr_accessor :configuration
+
+    def self.configure
+      self.configuration ||= Correios::Setup.new
+    end
+
     def initialize(cep)
-      @data = cep.is_a?(Hash) ? cep : Setup.ceps[cep]
+      @data = cep.is_a?(Hash) ? cep : self.configuration.ceps[cep]
     end
 
     def valid?
