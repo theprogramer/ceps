@@ -44,7 +44,7 @@ module Correios
     class << self
 
       def new(cep)
-        if cep.is_a?(Hash) || Setup.ceps.keys.include?(cep)
+        if cep.is_a?(Hash) || self.configuration.ceps.keys.include?(cep)
           super
         end
       end
