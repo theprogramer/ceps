@@ -31,7 +31,7 @@ module Correios
     private
 
       def load
-        YAML.load_file(@data_file)
+        YAML.load_file(data_file)
       end
 
       def default_file_path
