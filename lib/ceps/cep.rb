@@ -25,7 +25,7 @@ module Correios
     end
 
     def initialize(cep)
-      @data = cep.is_a?(Hash) ? cep : Cep.configure.ceps[cep]
+      @data = cep.is_a?(Hash) ? cep : self.class.configure.ceps[cep]
     end
 
     def valid?
@@ -38,7 +38,7 @@ module Correios
 
     private
       def new(cep)
-        if cep.is_a?(Hash) || Cep.configure.ceps.keys.include?(cep)
+        if cep.is_a?(Hash) || @configuration.ceps.keys.include?(cep)
           super
         end
       end
