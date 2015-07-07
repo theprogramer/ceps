@@ -18,7 +18,10 @@ module Correios
 
     attr_reader :data
 
-    attr_accessor :configuration
+    class << self
+      attr_accessor :configuration
+    end
+
 
     def self.configure
       self.configuration ||= Correios::Setup.new
