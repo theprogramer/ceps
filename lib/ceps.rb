@@ -11,7 +11,6 @@ class Cep < Correios::Cep
 
   def self.configure
     self.configuration ||= Correios::Setup.new
-    yield(configuration)
   end
 
 end
