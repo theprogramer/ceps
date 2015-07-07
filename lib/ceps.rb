@@ -10,7 +10,7 @@ class Cep < Correios::Cep
   end
 
   def self.configure
-    self.configuration ||= Setup.new
+    self.configuration ||= Correios::Setup.new
   end
 
 end
