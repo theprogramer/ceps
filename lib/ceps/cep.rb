@@ -2,17 +2,17 @@ module Correios
 
   class Cep
 
-    AttrReaders = [
-      :location,
-      :type,
-      :neighborhood,
-      :city,
-      :state
-    ]
+    AttrReaders = {
+      l: :location,
+      t: :type,
+      n: :neighborhood,
+      c: :city,
+      s: :state
+    }
 
-    AttrReaders.each do |meth|
-      define_method meth do
-        @data[meth.to_s]
+    AttrReaders.each do |short, long|
+      define_method long do
+        @data[short.to_s]
       end
     end
 
