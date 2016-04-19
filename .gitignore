@@ -19,3 +19,5 @@ test/version_tmp
 tmp
 .ruby-version
 .ruby-gemset
+ceps.sublime-project
+ceps.sublime-workspace

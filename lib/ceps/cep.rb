@@ -18,13 +18,15 @@ module Correios
 
     attr_reader :data
 
+    attr_writer :cep
+
     attr_accessor :configuration
 
     def self.configure
-      @configuration ||= Correios::Setup.new
+      @configuration ||= Correios::Setup.new(@cep)
     end
 
-    def initialize(cep)
+    def initialize(cep = nil)
       @data = cep.is_a?(Hash) ? cep : self.class.configure.ceps[cep]
     end
 
@@ -38,10 +40,13 @@ module Correios
 
     private
       def new(cep)
+        @cep = cep
         if cep.is_a?(Hash) || @configuration.ceps.keys.include?(cep)
           super
         end
       end
+
+
   end
 
 end

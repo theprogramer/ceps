@@ -5,9 +5,13 @@ namespace :ceps do
 
     require 'mdb'
     require 'yaml'
-    require_relative 'lib/ceps/mdb'
+    require 'ceps'
+    require_relative '../ceps/mdb'
     require 'ruby-progressbar'
 
+    puts "\n\nLoad from #{ARGV[1]}"
+    puts "\n\n\n -----------------"
+    puts "Importing to #{Correios::Cep.configure.main_data_file}"
     db = Mdb.open ARGV[1]
     puts "Loading routes"
     puts "This should take some time!"
@@ -38,9 +42,40 @@ namespace :ceps do
       progressbar.refresh
     end
     puts "Saving new ceps.yaml"
-    File.open(Cep.configure.data_file,'w') do |h| 
+    File.open(Correios::Cep.configure.main_data_file,'w') do |h| 
       h.write ceps.to_yaml
     end
+  end
+
+  desc "ceps.yml file"
+  task :split do
+    require 'geocoder'
+    require 'retryable'
+    require 'yaml'
+    require 'ceps'
+    require 'fileutils'
+
+    puts "Loading routes"
+    puts "This should take some time!"
+    main_hash = YAML.load_file(ARGV[1] || Cep.configure.data_file) || {}
+    ceps = {}
+    puts "Generating new hashes"
+    main_hash.each do |cep, value|
+      query = "#{main_hash[cep][:type]} #{main_hash[cep][:location]}, #{main_hash[cep][:neighborhood]} - #{main_hash[cep][:city]} - #{main_hash[cep][:state]} - cep: #{cep}" 
+      ceps[cep.to_s[0,5].to_i] ||= {}
+      ceps[cep.to_s[0,5].to_i][cep] = value
+    end
+
+    ceps.each do |cep_key, value|
+      file_name = "#{cep_key}.yaml"
+      root_path = ARGV[2] || Cep.configure.data_file_path
+      path = "#{root_path}/ceps/#{cep_key.to_s.split(//).join('/')}/"
+      file = "#{path}#{file_name}"
+      puts "Saving new #{cep_key}.yaml to #{path}"
+      FileUtils.mkdir_p path
+      File.open(file,"w") { |h| h.write value.to_yaml; }
+    end
+
   end
 
 end
